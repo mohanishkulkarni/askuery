@@ -1,0 +1,35 @@
+<div>
+  <br />
+</div>
+<div class="title">
+  Users
+</div>
+
+<div class="user-list-container">
+  <% if session[:id] %>
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Email</th>
+        <% if session[:isadmin] == 1 %>
+          <th>Posts</th>
+          <th>Votes for</th>
+          <th>Votes By</th>
+          <th></th>
+          <th></th>
+        <% end %>
+      </tr>
+      <%= render @users %>
+    </table>
+  <% else %>
+    You need to login to view this page! <%= link_to "Sign In", :controller => 'sessions', :action => 'new' %>
+  <% end %>
+</div>
+
+<div>
+  <br />
+  <hr>
+  <%= link_to "Go to homepage", :controller => 'system', :action => 'index' %>
+</div>
+

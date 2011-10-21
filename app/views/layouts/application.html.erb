@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AsKuery</title>
+  <%= stylesheet_link_tag    "display" %>
+  <%= csrf_meta_tags %>
+</head>
+  <body>
+    <% flash.each do |key, value| %>
+      <div class="flash <%= key %>"><%= value %></div>
+    <% end %>
+
+    <div class="header-band">
+      <div class="header-content group">
+        <div>
+          <a href="/" class="askuery-logo">Askuery</a>
+        </div>
+        <div class="nav-bar">
+          <%= render "layouts/navbar" %>
+        </div>
+        <div class="header-search-form">
+          <%= render "layouts/search" %>
+        </div>
+        <div class="header-signin-content">
+          <%= render "sessions/signin" %>
+        </div>
+
+      </div>
+    </div>
+    <div class="main-content-band">
+      <div class="main-content">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

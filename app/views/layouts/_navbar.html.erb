@@ -1,0 +1,14 @@
+<div class="nav mainnavs">
+  <ul>
+    <li><%= link_to "Home", :controller => 'system', :action => 'index', :id => "nav-questions" %></li>
+    <li><%= link_to "All Questions", :controller => 'system', :action => 'see_all_questions'%></li>
+    <li><%= link_to "Users", :controller => 'users', :action => 'index'%></li>
+  </ul>
+</div>
+<div class="nav askquestion">
+  <ul>
+    <li>
+      <%= link_to "Ask Question", :controller => 'posts', :action => 'new', :id => "nav-askquestion" %>
+    </li>
+  </ul>
+</div>

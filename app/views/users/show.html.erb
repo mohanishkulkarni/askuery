@@ -1,0 +1,53 @@
+<div class="title">
+ <br />
+ User Profile
+  <hr />
+</div>
+
+<p>
+  <b>Username:</b>
+  <%= @user.username %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<% if @numofposts == 0 %>
+    <p>
+      <b> <%= @user.username %> has not posted any questions yet.</b>
+    </p>
+<% else %>
+    <p>
+      <b>Number of Posts by <%= @user.username %>:</b>
+      <%= @numofposts %>
+    </p>
+<% end %>
+
+<% if @user.isadmin == 1 %>
+<p>
+  <b> <%= @user.username %> has Admin Functionality.</b>
+</p>
+<% end %>
+
+<% if session[:isadmin] == 1 and session[:id] != @user.id and @user.username != 'admin-admin' %>
+  <div class="form-button-other-panel">
+    <% if @user.isadmin == 0 %>
+      <%= button_to 'Grant Admin',  {:controller => 'system', :action => 'grant_admin', :user_id => @user.id}, :class => 'form-button-other' %> <br />
+    <% else %>
+      <%= button_to 'Revoke Admin',  {:controller => 'system', :action => 'revoke_admin', :user_id => @user.id}, :class => 'form-button-other' %> <br />
+    <% end %>
+  </div>
+  <div class="form-button-other-panel">
+    <%= button_to 'Delete This User',  {:controller => 'system', :action => 'delete_user', :user_id => @user.id, :listing => @from_list}, :class => 'form-button-other'  %> <br />
+  </div>
+<% end %>
+
+<hr />
+<%= link_to 'Go To Homepage',  :controller => 'system', :action => 'index' %>
